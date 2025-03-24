@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "IUTABLE'O",
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF50508A)
+        scaffoldBackgroundColor: const Color(0xFF000000)
       ),
       home: const MainScreen(),
     );
@@ -73,21 +73,24 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      selectedItemColor: Colors.black, 
+      backgroundColor: Color(0xFF363737),
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: Color(0xFFBBBBBB), 
+      unselectedItemColor: Color(0xFFBBBBBB),
       currentIndex: currentIndex,
       onTap: onTap,
       items: [
           BottomNavigationBarItem(            
-            icon: Image.asset("icons/home.png",width: 24, height: 24),
+            icon: Icon(Icons.home, color: Color(0xFFBBBBBB), ),
             label: "Home"),
           BottomNavigationBarItem(
-            icon: Image.asset("icons/search.png",width: 24, height: 24),
+            icon: Icon(Icons.search, color: Color(0xFFBBBBBB), ),
             label: "Recherche"),
           BottomNavigationBarItem(
-            icon: Image.asset("icons/list.png",width: 24, height: 24),
+            icon: Icon(Icons.list, color: Color(0xFFBBBBBB)),
             label: "Ma liste"),
           BottomNavigationBarItem(
-            icon: Image.asset("icons/account_circle.png",width: 24, height: 24),
+            icon: Icon(Icons.account_circle, color: Color(0xFFBBBBBB)),
             label: "Mon Compte"),
         ],
     );
