@@ -8,15 +8,15 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Search"),
+        backgroundColor: Color(0xFF363737),
+        title: const Text("Search",
+        style: TextStyle(color: Color(0xFFBBBBBB))),
       ),
       body: Center(
-        child: Text(
-          "Search",
+        child: Text("Search",
+          style: TextStyle(color: Color(0xFFBBBBBB))
         ),
       ),
     );
   }
 }
-
-
