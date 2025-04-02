@@ -6,8 +6,9 @@ import 'package:flutter/foundation.dart'; // pour debugPrint
 class ProviderService {
   // Chargement du JSON et insertion des restaurants
   static Future<void> loadRestaurants() async {
+    print("Load");
     final String jsonString = await rootBundle.loadString(
-      'lib/data/restaurants_orleans.json',
+      'data/restaurants_orleans.json',
     );
     final List<dynamic> data = json.decode(jsonString);
     for (final restaurantData in data) {
@@ -18,5 +19,6 @@ class ProviderService {
         debugPrint("Erreur lors de l'insertion : $e");
       }
     }
+    print("Restaurants chargés avec succès");
   }
 }

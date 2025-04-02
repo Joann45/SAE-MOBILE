@@ -10,6 +10,25 @@ class User {
 
   User({this.id, this.nom, this.prenom, this.mail, this.mdp, this.telephone});
 
+  // Getters et Setters pour User
+  int? get getId => id;
+  set setId(int? value) => id = value;
+
+  String? get getNom => nom;
+  set setNom(String? value) => nom = value;
+
+  String? get getPrenom => prenom;
+  set setPrenom(String? value) => prenom = value;
+
+  String? get getMail => mail;
+  set setMail(String? value) => mail = value;
+
+  String? get getMdp => mdp;
+  set setMdp(String? value) => mdp = value;
+
+  String? get getTelephone => telephone;
+  set setTelephone(String? value) => telephone = value;
+
   // Méthode CRUD : Create
   static Future<int?> create(Map<String, dynamic> data) async {
     final client = SupabaseConnection.getClient();
@@ -26,7 +45,7 @@ class User {
         await client.from('utilisateur').select().eq('id', id).single();
     final err = (response as dynamic).error;
     if (err != null) throw Exception(err.message);
-    return response.data;
+    return response;
   }
 
   // Méthode CRUD : Read (getAll)
@@ -35,7 +54,7 @@ class User {
     final response = await client.from('utilisateur').select();
     final err = (response as dynamic).error;
     if (err != null) throw Exception(err.message);
-    return response.data;
+    return response;
   }
 
   // Méthode CRUD : Update

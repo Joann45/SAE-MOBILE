@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:sae_mobile/models/supabase_connection.dart';
 import 'package:sae_mobile/screens/home.dart';
 import 'package:sae_mobile/screens/search.dart';
 import 'package:sae_mobile/screens/profile.dart';
 import 'package:sae_mobile/screens/list.dart';
+import 'models/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Lancer le provider pour charger les restaurants
+  await SupabaseConnection.initialize();
+  await ProviderService.loadRestaurants();
   runApp(const MyApp());
 }
 
@@ -16,9 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "IUTABLE'O",
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF000000)
-      ),
+      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF000000)),
       home: const MainScreen(),
     );
   }
@@ -34,7 +38,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  
+
   final List<Widget> _screens = [
     const HomeScreen(),
     const SearchScreen(),
@@ -75,24 +79,30 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       backgroundColor: Color(0xFF363737),
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: Color(0xFFBBBBBB), 
+      selectedItemColor: Color(0xFFBBBBBB),
       unselectedItemColor: Color(0xFFBBBBBB),
       currentIndex: currentIndex,
       onTap: onTap,
       items: [
-          BottomNavigationBarItem(            
-            icon: Icon(Icons.home, color: Color(0xFFBBBBBB), ),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Color(0xFFBBBBBB),
+            ),
             label: "Home"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search, color: Color(0xFFBBBBBB), ),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              color: Color(0xFFBBBBBB),
+            ),
             label: "Recherche"),
-          BottomNavigationBarItem(
+        BottomNavigationBarItem(
             icon: Icon(Icons.list, color: Color(0xFFBBBBBB)),
             label: "Ma liste"),
-          BottomNavigationBarItem(
+        BottomNavigationBarItem(
             icon: Icon(Icons.account_circle, color: Color(0xFFBBBBBB)),
             label: "Mon Compte"),
-        ],
+      ],
     );
   }
 }
