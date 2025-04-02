@@ -14,63 +14,64 @@ class HomeScreen extends StatelessWidget {
         title: const Text("Home",
         style: TextStyle(color: Color(0xFFBBBBBB))),
       ),
-      body: Column(
-        children: <Widget> [
+      body: Center(
+        child: Column(
+          children: <Widget> [
 
 
-          FutureBuilder<RestaurantCardList?>(
-            future: API().getRestaurant(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              }
-              if (snapshot.hasData) {
-                var restaurantData = snapshot.data!;
-                return restaurantData;
-              }
-              else {
-                return Text("ERROR");
-              }
-            },
-          ),
+            FutureBuilder<RestaurantCardList?>(
+              future: API().getRestaurant(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                }
+                if (snapshot.hasData) {
+                  var restaurantData = snapshot.data!;
+                  return restaurantData;
+                }
+                else {
+                  return Text("ERROR");
+                }
+              },
+            ),
 
 
-          FutureBuilder<RestaurantCardList?>(
-            future: API().getRestaurant(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              }
-              if (snapshot.hasData) {
-                var restaurantData = snapshot.data!;
-                return restaurantData;
-              }
-              else {
-                return Text("ERROR");
-              }
-            },
-          ),
+            FutureBuilder<RestaurantCardList?>(
+              future: API().getRestaurant(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                }
+                if (snapshot.hasData) {
+                  var restaurantData = snapshot.data!;
+                  return restaurantData;
+                }
+                else {
+                  return Text("ERROR");
+                }
+              },
+            ),
 
 
-          FutureBuilder<RestaurantCardList?>(
-            future: API().getRestaurant(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              }
-              if (snapshot.hasData) {
-                var restaurantData = snapshot.data!;
-                return restaurantData;
-              }
-              else {
-                return Text("ERROR");
-              }
-            },
-          ),
+            FutureBuilder<RestaurantCardList?>(
+              future: API().getRestaurant(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                }
+                if (snapshot.hasData) {
+                  var restaurantData = snapshot.data!;
+                  return restaurantData;
+                }
+                else {
+                  return Text("ERROR");
+                }
+              },
+            ),
 
 
-        ]
-
+          ]
+        )
       ),
     );
   }
